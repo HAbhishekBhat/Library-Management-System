@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <title>Library Management System</title>
+    <style>
+        html, body {
+          margin: 0;
+          padding: 0;
+          height: 100%;
+          font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+          background: radial-gradient(circle, #2c3e50 0%, #000000 100%);
+          overflow: hidden;
+        }
+
+        header {
+          text-align: center;
+          padding: 2rem;
+          color: white;
+          background: rgba(0, 0, 0, 0.6);
+          position: relative;
+          z-index: 2;
+        }
+
+        header h1 {
+          font-size: 2.8rem;
+          margin: 0;
+        }
+
+        nav {
+          background: rgba(0, 0, 0, 0.7);
+          display: flex;
+          justify-content: center;
+          padding: 1rem 0;
+          z-index: 2;
+          position: relative;
+        }
+
+        nav a {
+          color: #f9ca24;
+          text-decoration: none;
+          margin: 0 1.5rem;
+          font-weight: bold;
+          font-size: 1.1rem;
+          transition: color 0.3s ease;
+        }
+
+        nav a:hover {
+          color: #00cec9;
+        }
+
+        .container {
+          padding: 3rem 2rem;
+          display: grid;
+          gap: 2rem;
+          grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+          z-index: 2;
+          position: relative;
+        }
+
+        .card {
+          background: rgba(255, 255, 255, 0.9);
+          padding: 2rem;
+          border-radius: 16px;
+          box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+        }
+
+        .card h2 {
+          margin-top: 0;
+          color: #2980b9;
+        }
+
+        .card button {
+          background: #00b894;
+          border: none;
+          padding: 0.7rem 1.4rem;
+          color: white;
+          border-radius: 8px;
+          cursor: pointer;
+          margin-top: 1rem;
+          font-size: 1rem;
+          font-weight: 500;
+        }
+
+        .card button:hover {
+          background: #55efc4;
+          color: #2d3436;
+        }
+
+        marquee {
+          background: rgba(255,255,255,0.9);
+          padding: 1rem;
+          font-style: italic;
+          color: #2d3436;
+          font-weight: 500;
+          position: relative;
+          z-index: 2;
+        }
+
+        footer {
+          background: rgba(0, 0, 0, 0.7);
+          color: white;
+          text-align: center;
+          padding: 1rem;
+          z-index: 2;
+          position: relative;
+        }
+
+        #three-container {
+          position: fixed;
+          top: 0; left: 0;
+          width: 100%; height: 100%;
+          pointer-events: none;
+          z-index: 0;
+        }
+    </style>
+</head>
+<body>
+
+<!-- 3D container -->
+<canvas id="three-container"></canvas>
+
+<header>
+    <h1>📚 Welcome to the Library Management System</h1>
+</header>
+
+<nav>
+    <a href="/api/books">Books</a>
+    <a href="/api/members">Members</a>
+    <a href="/api/borrowRecords">Borrow/Return</a>
+</nav>
+
+<div class="container">
+    <div class="card" id="books">
+        <h2>Manage Books</h2>
+        <p>Add, update, delete, and view books in the system.</p>
+        <button onclick="window.location.href='/api/books'">Manage Books</button>
+    </div>
+
+    <div class="card" id="members">
+        <h2>Manage Members</h2>
+        <p>Register new members and update member records.</p>
+        <button onclick="window.location.href='/api/members'">Manage Members</button>
+    </div>
+
+    <div class="card" id="borrow">
+        <h2>Borrow/Return</h2>
+        <p>Borrow and return books. Track due dates and fines.</p>
+        <button onclick="window.location.href='/api/borrowRecords'">Borrow/Return</button>
+    </div>
+</div>
+
+<marquee>
+    "A room without books is like a body without a soul." – Marcus Tullius Cicero &nbsp;&nbsp;&nbsp;
+    "The only thing you absolutely have to know is the location of the library." – Einstein &nbsp;&nbsp;&nbsp;
+    "Today a reader, tomorrow a leader." – Margaret Fuller &nbsp;&nbsp;&nbsp;
+    "Reading is essential for those who seek to rise above the ordinary." – Jim Rohn
+</marquee>
+
+<footer>
+    &copy; 2025 Library Management System. Crafted with 📚 & ❤️.
+</footer>
+
+<script>
+    // Fetch Books from backend API
+    async function fetchBooks() {
+        try {
+            const response = await fetch('http://localhost:8080/api/books'); // Update to backend API URL
+            const books = await response.json();
+            console.log(books);
+        } catch (error) {
+            console.error("Error fetching books:", error);
+        }
+    }
+
+    // Fetch Members from backend API
+    async function fetchMembers() {
+        try {
+            const response = await fetch('http://localhost:8080/api/members'); // Update to backend API URL
+            const members = await response.json();
+            console.log(members);
+        } catch (error) {
+            console.error("Error fetching members:", error);
+        }
+    }
+
+    // Fetch Borrow Records from backend API
+    async function fetchBorrowRecords() {
+        try {
+            const response = await fetch('http://localhost:8080/api/borrow-records'); // Update to backend API URL
+            const borrowRecords = await response.json();
+            console.log(borrowRecords);
+        } catch (error) {
+            console.error("Error fetching borrow records:", error);
+        }
+    }
+
+    // Initialize data on page load
+    window.onload = () => {
+        fetchBooks();
+        fetchMembers();
+        fetchBorrowRecords();
+    };
+</script>
+
+</body>
+</html>

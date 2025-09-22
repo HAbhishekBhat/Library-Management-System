@@ -1,0 +1,14 @@
+com\library\version3\controller\BookController.class
+com\library\version3\controller\BorrowRecordController.class
+com\library\version3\controller\MemberController.class
+com\library\version3\repository\MemberRepository.class
+com\library\version3\repository\BorrowRecordRepository.class
+com\library\version3\service\MemberService.class
+com\library\version3\entity\BorrowRecord.class
+com\library\version3\entity\Book$BookStatus.class
+com\library\version3\service\BookService.class
+com\library\version3\Version3Application.class
+com\library\version3\entity\Book.class
+com\library\version3\repository\BookRepository.class
+com\library\version3\service\BorrowRecordService.class
+com\library\version3\entity\Member.class
