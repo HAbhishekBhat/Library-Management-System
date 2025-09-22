@@ -1,2 +1,2 @@
 # Library-Management-System
-4 Versions of same project via java springboot
+A full-stack Library Management System developed using Java Spring Boot, MySQL, and optionally Thymeleaf or REST APIs with React/Angular frontend. The system allows users to browse, borrow, and return books, while admins can manage books, users, and borrowing records. This project demonstrates modern Java web development, database integration, and role-based access control.
